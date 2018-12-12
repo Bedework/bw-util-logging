@@ -52,6 +52,10 @@ public interface Logged {
     return getLogger().isTraceEnabled();
   }
 
+  default boolean isMetricsDebugEnabled() {
+    return getLogger().isMetricsDebugEnabled();
+  }
+
   @SuppressWarnings("unused")
   default void enableErrorLogger() {
     getLogger().enableErrorLogger();

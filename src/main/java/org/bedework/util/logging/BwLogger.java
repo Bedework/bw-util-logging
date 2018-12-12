@@ -93,6 +93,10 @@ public class BwLogger {
     return getLogger().isDebugEnabled();
   }
 
+  public boolean isMetricsDebugEnabled() {
+    return getLogger(metricsLoggerName).isDebugEnabled();
+  }
+
   public boolean isTraceEnabled() {
     return getLogger().isTraceEnabled();
   }
