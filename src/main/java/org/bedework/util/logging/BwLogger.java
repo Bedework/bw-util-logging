@@ -1,7 +1,7 @@
 /* ********************************************************************
     Appropriate copyright notice
 */
-package org.bedework.util.misc;
+package org.bedework.util.logging;
 
 import org.apache.log4j.Logger;
 
@@ -17,8 +17,6 @@ import java.util.Map;
  * User: mike Date: 12/11/18 Time: 15:51
  */
 public class BwLogger {
-  protected boolean debug;
-
   protected Class loggedClass;
 
   private transient Logger log;
@@ -29,8 +27,9 @@ public class BwLogger {
   public final static String auditLoggerName = "audit"; // INFO only
   public final static String metricsLoggerName = "metrics"; // INFO only
 
-  public void setLoggedClass(final Class cl) {
+  public BwLogger setLoggedClass(final Class cl) {
     loggedClass = cl;
+    return this;
   }
 
   public Class getLoggedClass() {
@@ -66,34 +65,6 @@ public class BwLogger {
     return theLogger;
   }
 
-  protected void enableErrorLogger() {
-    getLogger(errorLoggerName);
-  }
-
-  protected void enableAuditLogger() {
-    getLogger(auditLoggerName);
-  }
-
-  protected void enableMetricsLogger() {
-    getLogger(metricsLoggerName);
-  }
-
-  protected boolean isdebugEnabled() {
-    return getLogger().isDebugEnabled();
-  }
-
-  protected boolean isErrorLoggerEnabled() {
-    return getLogger(errorLoggerName) != null;
-  }
-
-  protected boolean isAuditLoggerEnabled() {
-    return getLogger(auditLoggerName) != null;
-  }
-
-  protected boolean isMetricsLoggerEnabled() {
-    return getLogger(metricsLoggerName) != null;
-  }
-
   protected Logger getErrorLoggerIfEnabled() {
     return loggers.get(errorLoggerName);
   }
@@ -106,10 +77,42 @@ public class BwLogger {
     return loggers.get(metricsLoggerName);
   }
 
+  public void enableErrorLogger() {
+    getLogger(errorLoggerName);
+  }
+
+  public void enableAuditLogger() {
+    getLogger(auditLoggerName);
+  }
+
+  public void enableMetricsLogger() {
+    getLogger(metricsLoggerName);
+  }
+
+  public boolean isDebugEnabled() {
+    return getLogger().isDebugEnabled();
+  }
+
+  public boolean isTraceEnabled() {
+    return getLogger().isTraceEnabled();
+  }
+
+  public boolean isErrorLoggerEnabled() {
+    return getLogger(errorLoggerName) != null;
+  }
+
+  public boolean isAuditLoggerEnabled() {
+    return getLogger(auditLoggerName) != null;
+  }
+
+  public boolean isMetricsLoggerEnabled() {
+    return getLogger(metricsLoggerName) != null;
+  }
+
   /**
    * @param t exception
    */
-  protected void error(final Throwable t) {
+  public void error(final Throwable t) {
     getLogger().error(this, t);
 
     final Logger errorLogger = getErrorLoggerIfEnabled();
@@ -122,7 +125,7 @@ public class BwLogger {
   /**
    * @param msg to output
    */
-  protected void error(final String msg) {
+  public void error(final String msg) {
     getLogger().error(msg);
 
     final Logger errorLogger = getErrorLoggerIfEnabled();
@@ -135,21 +138,35 @@ public class BwLogger {
   /**
    * @param msg to output
    */
-  protected void warn(final String msg) {
+  public void error(final String msg,
+                       final Throwable t) {
+    getLogger().error(msg, t);
+
+    final Logger errorLogger = getErrorLoggerIfEnabled();
+
+    if (errorLogger != null) {
+      errorLogger.error(msg, t);
+    }
+  }
+
+  /**
+   * @param msg to output
+   */
+  public void warn(final String msg) {
     getLogger().warn(msg);
   }
 
   /**
    * @param msg to output
    */
-  protected void info(final String msg) {
+  public void info(final String msg) {
     getLogger().info(msg);
   }
 
   /**
    * @param msg to output
    */
-  protected void audit(final String msg) {
+  public void audit(final String msg) {
     if (isAuditLoggerEnabled()) {
       getLogger(auditLoggerName).info(msg);
     }
@@ -158,7 +175,7 @@ public class BwLogger {
   /**
    * @param msg to output
    */
-  protected void metrics(final String msg) {
+  public void metrics(final String msg) {
     if (isMetricsLoggerEnabled()) {
       getLogger(metricsLoggerName).info(msg);
     }
@@ -167,7 +184,14 @@ public class BwLogger {
   /**
    * @param msg to output
    */
-  protected void debug(final String msg) {
+  public void debug(final String msg) {
     getLogger().debug(msg);
+  }
+
+  /**
+   * @param msg to output
+   */
+  public void trace(final String msg) {
+    getLogger().trace(msg);
   }
 }

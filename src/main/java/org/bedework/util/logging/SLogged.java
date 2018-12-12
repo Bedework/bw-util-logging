@@ -16,7 +16,7 @@
     specific language governing permissions and limitations
     under the License.
 */
-package org.bedework.util.misc;
+package org.bedework.util.logging;
 
 /** This interface provides access to logging for static methods.
  *
@@ -30,7 +30,7 @@ public interface SLogged {
   public final static String metricsLoggerName = BwLogger.metricsLoggerName;
 
   static void setLoggerClass(final Class cl) {
-    logger.setClass(cl);
+    logger.setLoggedClass(cl);
   }
 
   static BwLogger getLogger() {
@@ -38,7 +38,11 @@ public interface SLogged {
   }
 
   static boolean debug() {
-    return logger.isdebugEnabled();
+    return logger.isDebugEnabled();
+  }
+
+  static boolean trace() {
+    return getLogger().isTraceEnabled();
   }
 
   @SuppressWarnings("unused")
@@ -89,6 +93,14 @@ public interface SLogged {
   /**
    * @param msg to output
    */
+  static void error(final String msg,
+                     final Throwable t) {
+    getLogger().error(msg, t);
+  }
+
+  /**
+   * @param msg to output
+   */
   static void warn(final String msg) {
     logger.warn(msg);
   }
@@ -121,5 +133,12 @@ public interface SLogged {
    */
   static void debug(final String msg) {
     logger.debug(msg);
+  }
+
+  /**
+   * @param msg to output
+   */
+  static void trace(final String msg) {
+    getLogger().trace(msg);
   }
 }

@@ -16,7 +16,7 @@
     specific language governing permissions and limitations
     under the License.
 */
-package org.bedework.util.misc;
+package org.bedework.util.logging;
 
 /** This interface provides access to logging for non-static methods.
  *
@@ -45,7 +45,11 @@ public interface Logged {
   }
 
   default boolean debug() {
-    return getLogger().isdebugEnabled();
+    return getLogger().isDebugEnabled();
+  }
+
+  default boolean trace() {
+    return getLogger().isTraceEnabled();
   }
 
   @SuppressWarnings("unused")
@@ -96,6 +100,14 @@ public interface Logged {
   /**
    * @param msg to output
    */
+  default void error(final String msg,
+                     final Throwable t) {
+    getLogger().error(msg, t);
+  }
+
+  /**
+   * @param msg to output
+   */
   default void warn(final String msg) {
     getLogger().warn(msg);
   }
@@ -128,5 +140,12 @@ public interface Logged {
    */
   default void debug(final String msg) {
     getLogger().debug(msg);
+  }
+
+  /**
+   * @param msg to output
+   */
+  default void trace(final String msg) {
+    getLogger().trace(msg);
   }
 }
