@@ -19,6 +19,8 @@ import java.util.Map;
 public class BwLogger {
   protected Class loggedClass;
 
+  protected String loggedName;
+
   private transient Logger log;
 
   private final Map<String, Logger> loggers = new HashMap<>(5);
@@ -36,16 +38,28 @@ public class BwLogger {
     return loggedClass;
   }
 
+  public BwLogger setLoggedName(final String name) {
+    loggedName = name;
+    return this;
+  }
+
+  public String getLoggedName() {
+    return loggedName;
+  }
+
   /**
    * @return Logger
    */
   protected Logger getLogger() {
-    assert loggedClass != null;
+    assert loggedClass != null || loggedName != null;
 
     if (log == null) {
-      log = Logger.getLogger(loggedClass);
+      if (loggedClass != null) {
+        log = Logger.getLogger(loggedClass);
+      } else {
+        log = Logger.getLogger(loggedName);
+      }
     }
-
     return log;
   }
 

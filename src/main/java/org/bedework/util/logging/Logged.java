@@ -23,25 +23,14 @@ package org.bedework.util.logging;
  * @author douglm
  */
 public interface Logged {
-  BwLogger logger = new BwLogger();
-
-  public final static String errorLoggerName = BwLogger.errorLoggerName;
-  public final static String auditLoggerName = BwLogger.auditLoggerName;
-  public final static String metricsLoggerName = BwLogger.metricsLoggerName;
+  BwLogger getLogger();
 
   default void setLoggerClass() {
-    logger.setLoggedClass(getClass());
+    getLogger().setLoggedClass(getClass());
   }
 
   default void setLoggerClass(final Class cl) {
-    logger.setLoggedClass(cl);
-  }
-
-  default BwLogger getLogger() {
-    if (logger.getLoggedClass() == null) {
-      setLoggerClass();
-    }
-    return logger;
+    getLogger().setLoggedClass(cl);
   }
 
   default boolean debug() {
