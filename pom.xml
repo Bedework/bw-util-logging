@@ -33,7 +33,7 @@
     <connection>scm:git:git@github.com:Bedework/bw-util-logging.git</connection>
     <developerConnection>scm:git:git@github.com:Bedework/bw-util-logging.git</developerConnection>
     <url>https://github.com/Bedework/bw-util-logging</url>
-    <tag>bw-util-4.0.9</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
