@@ -103,6 +103,10 @@ public class BwLogger {
     getLogger(metricsLoggerName);
   }
 
+  public boolean debug() {
+    return getLogger().isDebugEnabled();
+  }
+
   public boolean isDebugEnabled() {
     return getLogger().isDebugEnabled();
   }
