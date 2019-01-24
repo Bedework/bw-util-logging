@@ -18,11 +18,14 @@
 */
 package org.bedework.util.logging;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /** This interface provides access to logging for non-static methods.
  *
  * @author douglm
  */
 public interface Logged {
+  @JsonIgnore
   BwLogger getLogger();
 
   default void setLoggerClass() {
@@ -41,6 +44,7 @@ public interface Logged {
     return getLogger().isTraceEnabled();
   }
 
+  @JsonIgnore
   default boolean isMetricsDebugEnabled() {
     return getLogger().isMetricsDebugEnabled();
   }
@@ -61,16 +65,19 @@ public interface Logged {
   }
 
   @SuppressWarnings("unused")
+  @JsonIgnore
   default boolean isErrorLoggerEnabled() {
     return getLogger().isErrorLoggerEnabled();
   }
 
   @SuppressWarnings("unused")
+  @JsonIgnore
   default boolean isAuditLoggerEnabled() {
     return getLogger().isAuditLoggerEnabled();
   }
 
   @SuppressWarnings("unused")
+  @JsonIgnore
   default boolean isMetricsLoggerEnabled() {
     return getLogger().isMetricsLoggerEnabled();
 

@@ -135,12 +135,12 @@ public class BwLogger {
    * @param t exception
    */
   public void error(final Throwable t) {
-    getLogger().error(this, t);
+    getLogger().error(t.getLocalizedMessage(), t);
 
     final Logger errorLogger = getErrorLoggerIfEnabled();
 
     if (errorLogger != null) {
-      errorLogger.error(this, t);
+      errorLogger.error(t.getLocalizedMessage(), t);
     }
   }
 
