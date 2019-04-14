@@ -14,7 +14,7 @@
     <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
     <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
 
-    <jackson.version>2.9.6</jackson.version>
+    <jackson.version>2.9.8</jackson.version>
     <log4j.version>1.2.15</log4j.version>
   </properties>
 
