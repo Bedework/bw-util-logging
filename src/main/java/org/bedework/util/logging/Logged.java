@@ -20,6 +20,8 @@ package org.bedework.util.logging;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.logging.Level;
+
 /** This interface provides access to logging for non-static methods.
  *
  * @author douglm
@@ -34,6 +36,14 @@ public interface Logged {
 
   default void setLoggerClass(final Class cl) {
     getLogger().setLoggedClass(cl);
+  }
+
+  default void setLogLevel(final String className, final Level level) {
+    getLogger().setLogLevel(className, level);
+  }
+
+  default Level getLogLevel(final String className) {
+    return getLogger().getLogLevel(className);
   }
 
   default boolean debug() {
