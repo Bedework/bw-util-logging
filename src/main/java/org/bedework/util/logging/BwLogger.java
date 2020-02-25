@@ -17,7 +17,7 @@ import java.util.logging.Level;
  * User: mike Date: 12/11/18 Time: 15:51
  */
 public class BwLogger {
-  protected Class loggedClass;
+  protected Class<?> loggedClass;
 
   protected String loggedName;
 
@@ -29,12 +29,12 @@ public class BwLogger {
   public final static String auditLoggerName = "audit"; // INFO only
   public final static String metricsLoggerName = "metrics"; // INFO only
 
-  public BwLogger setLoggedClass(final Class cl) {
+  public BwLogger setLoggedClass(final Class<?> cl) {
     loggedClass = cl;
     return this;
   }
 
-  public Class getLoggedClass() {
+  public Class<?> getLoggedClass() {
     return loggedClass;
   }
 
