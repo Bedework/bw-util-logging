@@ -1,16 +1,16 @@
 # bw-util-logging
 Move all logging dependencies to a single module
 
-### Requirements
+## Requirements
 
 1. JDK 11
 2. Maven 3
 
-### Building Locally
+## Building Locally
 
 > mvn clean install
 
-### Releasing
+## Releasing
 
 Releases of this fork are published to Maven Central via Sonatype.
 
@@ -30,3 +30,8 @@ When the build completes, and the changes are committed and pushed successfully,
 
 For full details, see [Sonatype's documentation for using Maven to publish releases](http://central.sonatype.org/pages/apache-maven.html).
 
+
+## Changes
+### 4.0.5
+    * Allow setting of log level
+    * Remove some references to log4j
