@@ -14,8 +14,9 @@
     <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
     <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
 
-    <jackson.version>2.9.8</jackson.version>
+    <jackson.version>2.10.0</jackson.version>
     <log4j.version>1.2.15</log4j.version>
+    <bw-util-deploy.version>4.0.28-SNAPSHOT</bw-util-deploy.version>
   </properties>
 
   <organization>
@@ -119,6 +120,7 @@
           <showWarnings>false</showWarnings>
         </configuration>
       </plugin>
+
       <!-- Produce source jars during the 'verify' phase -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -162,6 +164,40 @@
         <artifactId>versions-maven-plugin</artifactId>
         <version>2.3</version>
         <configuration>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.bedework</groupId>
+        <artifactId>bw-util-maven-deploy-wfmodule</artifactId>
+        <version>${bw-util-deploy.version}</version>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>bw-deploy-wfmodule</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <localRepository>${settings.localRepository}</localRepository>
+          <moduleName>org.bedework.logging</moduleName>
+          <debug>true</debug>
+          <wildflyPath>${project.basedir}/../wildfly</wildflyPath>
+          <jarDependencies>
+            <jarDependency>
+              <moduleName>org.bedework.com.fasterxml.jackson.core.annotations</moduleName>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-annotations</artifactId>
+              <version>${jackson.version}</version>
+              <type>jar</type>
+            </jarDependency>
+          </jarDependencies>
+
+          <moduleDependencies>
+            <dependency>org.apache.log4j</dependency>
+          </moduleDependencies>
+          <deployModules>true</deployModules>
         </configuration>
       </plugin>
     </plugins>
