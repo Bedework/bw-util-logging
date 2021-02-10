@@ -197,7 +197,7 @@
           <moduleDependencies>
             <dependency>org.apache.log4j</dependency>
           </moduleDependencies>
-          <deployModules>true</deployModules>
+          <deployModules>${org.bedework.deploy.modules}</deployModules>
         </configuration>
       </plugin>
     </plugins>
