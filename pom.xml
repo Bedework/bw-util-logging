@@ -182,8 +182,13 @@
         <configuration>
           <localRepository>${settings.localRepository}</localRepository>
           <moduleName>org.bedework.logging</moduleName>
+          <artifact>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${project.artifactId}</artifactId>
+            <version>${project.version}</version>
+          </artifact>
           <debug>true</debug>
-          <wildflyPath>${project.basedir}/../wildfly</wildflyPath>
+          <wildflyPath>${org.bedework.deployment.basedir}/wildfly</wildflyPath>
           <jarDependencies>
             <jarDependency>
               <moduleName>org.bedework.com.fasterxml.jackson.core.annotations</moduleName>
