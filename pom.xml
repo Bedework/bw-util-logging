@@ -180,29 +180,11 @@
           </execution>
         </executions>
         <configuration>
-          <localRepository>${settings.localRepository}</localRepository>
           <moduleName>org.bedework.logging</moduleName>
-          <artifact>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${project.artifactId}</artifactId>
-            <version>${project.version}</version>
-          </artifact>
-          <debug>true</debug>
-          <wildflyPath>${org.bedework.deployment.basedir}/wildfly</wildflyPath>
-          <jarDependencies>
-            <jarDependency>
-              <moduleName>org.bedework.com.fasterxml.jackson.core.annotations</moduleName>
-              <groupId>com.fasterxml.jackson.core</groupId>
-              <artifactId>jackson-annotations</artifactId>
-              <version>${jackson.version}</version>
-              <type>jar</type>
-            </jarDependency>
-          </jarDependencies>
 
           <moduleDependencies>
             <dependency>org.apache.log4j</dependency>
           </moduleDependencies>
-          <deployModules>${org.bedework.deploy.modules}</deployModules>
         </configuration>
       </plugin>
     </plugins>
