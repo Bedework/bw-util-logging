@@ -79,16 +79,8 @@
       <version>${log4j.version}</version>
       <exclusions>
         <exclusion>
-          <artifactId>jmxtools</artifactId>
-          <groupId>com.sun.jdmk</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jmxri</artifactId>
-          <groupId>com.sun.jmx</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>jms</artifactId>
-          <groupId>javax.jms</groupId>
+          <artifactId>*</artifactId>
+          <groupId>*</groupId>
         </exclusion>
       </exclusions>
       <scope>provided</scope>
@@ -98,6 +90,7 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
@@ -208,6 +201,7 @@
               </execution>
             </executions>
           </plugin>
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
@@ -225,6 +219,7 @@
               <failOnError>false</failOnError>
             </configuration>
           </plugin>
+
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
