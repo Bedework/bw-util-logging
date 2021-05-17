@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bedework</groupId>
   <artifactId>bw-util-logging</artifactId>
-  <version>4.0.6</version>
+  <version>4.0.7-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>bw-util-logging</name>
   <description>This project provides logging utility classes and methods</description>
@@ -34,7 +34,7 @@
     <connection>scm:git:git@github.com:Bedework/bw-util-logging.git</connection>
     <developerConnection>scm:git:git@github.com:Bedework/bw-util-logging.git</developerConnection>
     <url>https://github.com/Bedework/bw-util-logging</url>
-    <tag>bw-util-logging-4.0.6</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
