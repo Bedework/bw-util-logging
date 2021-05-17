@@ -16,6 +16,7 @@ import java.util.logging.Level;
  *
  * User: mike Date: 12/11/18 Time: 15:51
  */
+@SuppressWarnings("unused")
 public class BwLogger {
   protected Class<?> loggedClass;
 
@@ -76,17 +77,17 @@ public class BwLogger {
         /* At some point I'll remove the dependency on log4j.
         For the moment just translate levels
      */
-    var newLevel = toLog4jLevel.get(level.getName());
+    final var newLevel = toLog4jLevel.get(level.getName());
 
     if (newLevel == null) {
       return;
     }
 
-    var log = Logger.getLogger(className);
+    final var log = Logger.getLogger(className);
     log.setLevel(newLevel);
 
-    var rootLog = Logger.getRootLogger();
-    var rootLevel = rootLog.getLevel();
+    final var rootLog = Logger.getRootLogger();
+    final var rootLevel = rootLog.getLevel();
 
     if (newLevel.toInt() > rootLevel.toInt()) {
       rootLog.setLevel(newLevel);
@@ -94,7 +95,7 @@ public class BwLogger {
   }
 
   public Level getLogLevel(final String className) {
-    var level = fromLog4jLevel.get(getLogger(className).getLevel());
+    final var level = fromLog4jLevel.get(getLogger(className).getLevel());
 
     if (level == null) {
       return Level.INFO;

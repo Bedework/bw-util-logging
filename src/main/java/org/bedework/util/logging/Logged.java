@@ -30,18 +30,22 @@ public interface Logged {
   @JsonIgnore
   BwLogger getLogger();
 
+  @SuppressWarnings("unused")
   default void setLoggerClass() {
     getLogger().setLoggedClass(getClass());
   }
 
-  default void setLoggerClass(final Class cl) {
+  @SuppressWarnings("unused")
+  default void setLoggerClass(final Class<?> cl) {
     getLogger().setLoggedClass(cl);
   }
 
+  @SuppressWarnings("unused")
   default void setLogLevel(final String className, final Level level) {
     getLogger().setLogLevel(className, level);
   }
 
+  @SuppressWarnings("unused")
   default Level getLogLevel(final String className) {
     return getLogger().getLogLevel(className);
   }
@@ -55,6 +59,7 @@ public interface Logged {
   }
 
   @JsonIgnore
+  @SuppressWarnings("unused")
   default boolean isMetricsDebugEnabled() {
     return getLogger().isMetricsDebugEnabled();
   }
