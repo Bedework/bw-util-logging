@@ -41,11 +41,6 @@ public interface Logged {
   }
 
   @SuppressWarnings("unused")
-  default void setLogLevel(final String className, final Level level) {
-    getLogger().setLogLevel(className, level);
-  }
-
-  @SuppressWarnings("unused")
   default Level getLogLevel(final String className) {
     return getLogger().getLogLevel(className);
   }

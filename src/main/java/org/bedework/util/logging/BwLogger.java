@@ -3,7 +3,8 @@
 */
 package org.bedework.util.logging;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,50 +49,30 @@ public class BwLogger {
     return loggedName;
   }
 
-  private static final Map<String, org.apache.log4j.Level> toLog4jLevel = new HashMap<>();
+  /*
+  private static final Map<String, org.apache.logging.log4j.Level> toLog4jLevel = new HashMap<>();
   static {
-    toLog4jLevel.put("OFF", org.apache.log4j.Level.OFF);
-    toLog4jLevel.put("SEVERE", org.apache.log4j.Level.ERROR);
-    toLog4jLevel.put("WARNING", org.apache.log4j.Level.WARN);
-    toLog4jLevel.put("INFO", org.apache.log4j.Level.INFO);
-    toLog4jLevel.put("CONFIG", org.apache.log4j.Level.DEBUG);
-    toLog4jLevel.put("FINE", org.apache.log4j.Level.DEBUG);
-    toLog4jLevel.put("FINER", org.apache.log4j.Level.DEBUG);
-    toLog4jLevel.put("FINEST", org.apache.log4j.Level.TRACE);
-    toLog4jLevel.put("ALL", org.apache.log4j.Level.ALL);
-  }
+    toLog4jLevel.put("OFF", org.apache.logging.log4j.Level.OFF);
+    toLog4jLevel.put("SEVERE", org.apache.logging.log4j.Level.ERROR);
+    toLog4jLevel.put("WARNING", org.apache.logging.log4j.Level.WARN);
+    toLog4jLevel.put("INFO", org.apache.logging.log4j.Level.INFO);
+    toLog4jLevel.put("CONFIG", org.apache.logging.log4j.Level.DEBUG);
+    toLog4jLevel.put("FINE", org.apache.logging.log4j.Level.DEBUG);
+    toLog4jLevel.put("FINER", org.apache.logging.log4j.Level.DEBUG);
+    toLog4jLevel.put("FINEST", org.apache.logging.log4j.Level.TRACE);
+    toLog4jLevel.put("ALL", org.apache.logging.log4j.Level.ALL);
+  }*/
 
-  private static final Map<org.apache.log4j.Level, Level> fromLog4jLevel = new HashMap<>();
+  private static final Map<org.apache.logging.log4j.Level, Level> fromLog4jLevel = new HashMap<>();
   static {
-    fromLog4jLevel.put(org.apache.log4j.Level.OFF, Level.OFF);
-    fromLog4jLevel.put(org.apache.log4j.Level.ERROR, Level.SEVERE);
-    fromLog4jLevel.put(org.apache.log4j.Level.FATAL, Level.SEVERE);
-    fromLog4jLevel.put(org.apache.log4j.Level.WARN, Level.WARNING);
-    fromLog4jLevel.put(org.apache.log4j.Level.INFO, Level.INFO);
-    fromLog4jLevel.put(org.apache.log4j.Level.DEBUG, Level.FINE);
-    fromLog4jLevel.put(org.apache.log4j.Level.TRACE, Level.FINEST);
-    fromLog4jLevel.put(org.apache.log4j.Level.ALL, Level.ALL);
-  }
-
-  public void setLogLevel(final String className, final Level level) {
-        /* At some point I'll remove the dependency on log4j.
-        For the moment just translate levels
-     */
-    final var newLevel = toLog4jLevel.get(level.getName());
-
-    if (newLevel == null) {
-      return;
-    }
-
-    final var log = Logger.getLogger(className);
-    log.setLevel(newLevel);
-
-    final var rootLog = Logger.getRootLogger();
-    final var rootLevel = rootLog.getLevel();
-
-    if (newLevel.toInt() > rootLevel.toInt()) {
-      rootLog.setLevel(newLevel);
-    }
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.OFF, Level.OFF);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.ERROR, Level.SEVERE);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.FATAL, Level.SEVERE);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.WARN, Level.WARNING);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.INFO, Level.INFO);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.DEBUG, Level.FINE);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.TRACE, Level.FINEST);
+    fromLog4jLevel.put(org.apache.logging.log4j.Level.ALL, Level.ALL);
   }
 
   public Level getLogLevel(final String className) {
@@ -112,9 +93,9 @@ public class BwLogger {
 
     if (log == null) {
       if (loggedClass != null) {
-        log = Logger.getLogger(loggedClass);
+        log = LogManager.getLogger(loggedClass);
       } else {
-        log = Logger.getLogger(loggedName);
+        log = LogManager.getLogger(loggedName);
       }
     }
     return log;
@@ -129,7 +110,7 @@ public class BwLogger {
       return theLogger;
     }
 
-    theLogger = Logger.getLogger(name + "." + loggedClass.getName());
+    theLogger = LogManager.getLogger(name + "." + loggedClass.getName());
 
     loggers.put(name, theLogger);
 
