@@ -15,7 +15,7 @@
     <maven.source.plugin.version>2.1.2</maven.source.plugin.version>
 
     <jackson.version>2.11.0</jackson.version>
-    <log4j.version>2.14.1</log4j.version>
+    <log4j.version>2.15.0</log4j.version>
   </properties>
 
   <organization>
