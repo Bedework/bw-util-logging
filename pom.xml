@@ -8,10 +8,10 @@
   </parent>
 
   <artifactId>bw-util-logging</artifactId>
-  <version>5.0.1-SNAPSHOT</version>
+  <version>5.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>bw-util-logging</name>
+  <name>Bedework: logging classes</name>
   <description>This project provides logging utility classes and methods</description>
   <url>https://github.com/Bedework/bw-util-logging</url>
 
