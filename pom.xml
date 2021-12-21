@@ -15,6 +15,13 @@
   <description>This project provides logging utility classes and methods</description>
   <url>https://github.com/Bedework/bw-util-logging</url>
 
+  <scm>
+    <connection>scm:git:git@github.com:Bedework/bw-util-logging.git</connection>
+    <developerConnection>scm:git:git@github.com:Bedework/bw-util-logging.git</developerConnection>
+    <url>https://github.com/Bedework/bw-util-logging</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
