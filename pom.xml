@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>bw-util-logging</artifactId>
-  <version>5.1.0-SNAPSHOT</version>
+  <version>5.1.9-RC1</version>
   <packaging>jar</packaging>
 
   <name>Bedework: logging classes</name>
