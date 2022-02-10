@@ -34,13 +34,14 @@
     </dependency>
   </dependencies>
 
-      <!--
   <profiles>
     <profile>
       <id>release</id>
+      <!--
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
+       -->
 
       <build>
         <plugins>
@@ -51,5 +52,4 @@
       </build>
     </profile>
   </profiles>
-       -->
 </project>
