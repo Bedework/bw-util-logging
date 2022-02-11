@@ -4,11 +4,11 @@
   <parent>
     <groupId>org.bedework</groupId>
     <artifactId>bedework-parent</artifactId>
-    <version>3.RC4</version>
+    <version>3</version>
   </parent>
 
   <artifactId>bw-util-logging</artifactId>
-  <version>5.1.9-RC1</version>
+  <version>5.2.0</version>
   <packaging>jar</packaging>
 
   <name>Bedework: logging classes</name>
@@ -33,23 +33,4 @@
       <artifactId>jackson-annotations</artifactId>
     </dependency>
   </dependencies>
-
-      <!--
-  <profiles>
-    <profile>
-      <id>release</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-javadoc-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-       -->
 </project>
