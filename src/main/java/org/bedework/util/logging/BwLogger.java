@@ -210,6 +210,23 @@ public class BwLogger {
   }
 
   /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#ERROR ERROR} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  public void error(final String msg,
+                    final Object... params) {
+    getLogger().error(msg, params);
+
+    final Logger errorLogger = getErrorLoggerIfEnabled();
+
+    if (errorLogger != null) {
+      errorLogger.error(msg, params);
+    }
+  }
+
+  /**
    * @param msg to output
    */
   public void warn(final String msg) {
@@ -217,10 +234,32 @@ public class BwLogger {
   }
 
   /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#WARN WARN} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  public void warn(final String msg,
+                   final Object... params) {
+    getLogger().warn(msg, params);
+  }
+
+  /**
    * @param msg to output
    */
   public void info(final String msg) {
     getLogger().info(msg);
+  }
+
+  /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#INFO INFO} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  public void info(final String msg,
+                   final Object... params) {
+    getLogger().info(msg, params);
   }
 
   /**
@@ -249,9 +288,31 @@ public class BwLogger {
   }
 
   /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#DEBUG DEBUG} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  public void debug(final String msg,
+                    final Object... params) {
+    getLogger().debug(msg, params);
+  }
+
+  /**
    * @param msg to output
    */
   public void trace(final String msg) {
     getLogger().trace(msg);
+  }
+
+  /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#TRACE TRACE} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  public void trace(final String msg,
+                    final Object... params) {
+    getLogger().trace(msg, params);
   }
 }

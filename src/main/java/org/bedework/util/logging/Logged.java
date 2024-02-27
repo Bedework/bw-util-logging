@@ -153,9 +153,31 @@ public interface Logged {
   }
 
   /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#DEBUG DEBUG} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  default void debug(final String msg,
+                     final Object... params) {
+    getLogger().debug(msg, params);
+  }
+
+  /**
    * @param msg to output
    */
   default void trace(final String msg) {
     getLogger().trace(msg);
+  }
+
+  /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#DEBUG DEBUG} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  default void trace(final String msg,
+                     final Object... params) {
+    getLogger().trace(msg, params);
   }
 }
