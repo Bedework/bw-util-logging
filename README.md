@@ -33,16 +33,21 @@ For full details, see [Sonatype's documentation for using Maven to publish relea
 
 ## Changes
 ### 4.0.5
-    * Allow setting of log level
-    * Remove some references to log4j
+  * Allow setting of log level
+  * Remove some references to log4j
 ### 4.0.6
-    * Update commons-codec
-    * Remove wildfly deploy plugin. Deploy now a separate module
+   * Update commons-codec
+   * Remove wildfly deploy plugin. Deploy now a separate module
 ### 5.0.0
-    * Update to log4j2
+   * Update to log4j2
 ### 5.1.0
-    * Use bedework parent for builds
+   * Use bedework parent for builds
 ### 5.2.0
-    * Needed to fix release issues. No other change
+   * Needed to fix release issues. No other change
 ### 5.2.1
-    * Updated parent dependency. Later jackson version.
+   * Updated parent dependency. Later jackson version.
+### 5.2.2
+   * Add methods to take parameters. Update to latest released parent
+### 5.2.3
+* Update parent
+* Last pre-jakarta release
