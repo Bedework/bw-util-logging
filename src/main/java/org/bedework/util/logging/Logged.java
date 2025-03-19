@@ -123,10 +123,32 @@ public interface Logged {
   }
 
   /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#WARN WARN} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  default void warn(final String msg,
+                    final Object... params) {
+    getLogger().warn(msg, params);
+  }
+
+  /**
    * @param msg to output
    */
   default void info(final String msg) {
     getLogger().info(msg);
+  }
+
+  /**
+   * Logs a message with parameters at the {@link org.apache.logging.log4j.Level#INFO INFO} level.
+   *
+   * @param msg the message to log; the format depends on the message factory.
+   * @param params parameters to the message.
+   */
+  default void info(final String msg,
+                    final Object... params) {
+    getLogger().info(msg, params);
   }
 
   /**
