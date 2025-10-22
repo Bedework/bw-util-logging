@@ -1,0 +1,3 @@
+[[security]]
+== Logging classes
+Provides classes for classes which will write to the log(s).
